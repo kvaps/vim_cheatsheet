@@ -1,0 +1,158 @@
+1.  Move to...										|move-to|
+2.  Edit...											|edit|
+3.  Bookmarks										|bookmarks|
+4.  Cut...											|cut|
+5.  Copy & paste									|copy-paste|
+6.  Files											|files|
+7.  Search...										|search|
+8.  Macros											|macros|
+9.  Visual mode										|visual-mode|
+10. Buffers, views, tabs							|buffers-views-tabs|
+11. Options											|options|
+12. Miscellaneous									|miscellaneous|
+
+
+1.  Move to...										*move-to*
+
+	h, j, k, l			character left, down, up, right
+	0, gm, $			start, midule, end of line
+	b, w				start of word left, right
+	B, W				start of whitespaced word left, right
+	ge, e:				end of word left, right
+	gE, E				end of whitespaced word left, right
+	H, M, L				top, midule, bottom of screen
+	^f, ^b				next, previous screen
+	gg, G				start, end of file
+	`.					previous change
+	``					last jump
+	^o, ^i				older, newer :jump
+	[ENTER]				first non-white char of next line
+	%					matching brace
+	{, }				next, previous empty line
+	(, )				next, previous sentence
+	:n					line number n
+
+2.  Edit...											*edit*
+
+	i a					before, after cursor
+	I A					before, after line
+	o O					new line below, above
+	r					replace character
+	R					type over
+	J					join this, next line
+	~					change character case
+	u					undo
+	^r					redo
+	U					undo current line changes
+	>>, <<				ident, de-indent
+	^n, ^p				complete word
+	^x^l				complete line
+	:changes			show changes
+
+3.  Bookmarks										*bookmarks*
+
+	m[a-z]				mark here as [a-z]
+	m[A-Z]				same, but GLOBAL
+	`x					go to mark*
+	'x					go to line with mark x
+	:marks				list marks
+
+4.  Cut...											*cut*
+
+	x, X				next, last character
+	dd					current line
+	D					to end of line
+	:10,20 d			lines 10 through 20
+	:'x,'y d			between mark x and y
+
+5.  Copy & paste									*copy-paste*
+
+	yy					copy line
+	yn					copy n lines
+	[visual] y			copy selection
+	gv					re-select visual area
+	P p					paste before, after
+	:reg				show register contents
+	"x					use x for next y/p/d
+
+6.  Files											*files*
+
+	:e					file open file
+	:e .				explore dir
+	:e sftp://me.example.com/myfile	open sft
+	:e!					revert to saved
+	:w					file save file
+	:wq					save, close
+	:q!					close, don't save
+
+7.  Search...										*search*
+
+	/foo				foo forward
+	?foo				foo backward
+	*					next word under cursor
+	#					prev word under cursor
+	n N					again forward, back
+	:%S/foo/bar/gic		replace all, ignore case, confirm each
+	:S/foo/bar/gI		replace all on current line, mind case
+	:'x,'y s/foo/bar/g	replace between marks x and y
+
+8.  Macros											*macros*
+
+	qx					record to x
+	q					stop recording
+	@x					execute x
+
+
+9.  Visual mode										*visual-mode*
+	v					enter visual mode
+	^v					visual block mode
+	ggVG				select all
+
+10. Buffers, views, tabs							*buffers-views-tabs*
+
+	:ls (or :buffers)	list buffers
+	:bn, :bp			next, prev buffer
+	:bd					close buffer
+	:sp, :vsp			split view horizontal, vertical
+	^w^w				move cursor viewport
+	^w q				close viewport
+	^w -/+/=			resize viewport
+	:tabnew file		new tab
+	gt, gT				next, prev tab
+	:tabc				close tab
+	:tabdo %s/foo/bar	do to all tabs
+	zz, zt, zb			view line center, top, bottom
+
+11. Options											*options*
+
+	:set number			show line numbers
+	:set nonumber		hide line numbers
+	:set paste			autoindent off
+	:set hlsearch		highlight matches
+	:set syntax=perl	set syntax
+
+12. Miscellaneous									*miscellaneous*
+
+	:h quickref			help
+	.					repeat last command
+	g ^g				word count
+	g?					rot 13
+	:ce 80				center line columns
+	:%! filter			filter file
+	:! filter			filter selection
+	:! sort				example of above
+	:ab lw LongWord		Abbreviate LongWord
+	:una lw				unset abbreviation
+	]s, [s				next, last misspelled
+	zg, zug				add to dict, undo add
+	z=					suggest spelling
+
+
+Use the normal command in Ex mode to execute the macro on multiple/all lines:
+Execute the macro stored in register a on lines 5 through 10.
+:5.10norm! @a	
+Execute the macro stored in register a on all lines.	
+:%norm! @a	
+
+
+ vim:ft=help:
